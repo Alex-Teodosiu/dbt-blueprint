@@ -1,0 +1,16 @@
+user_id,first_name,last_name,email,registration_date,age,city,country
+1,John,Doe,john.doe@email.com,2023-01-15,28,New York,USA
+2,Jane,Smith,jane.smith@email.com,2023-02-20,34,London,UK
+3,Michael,Johnson,michael.johnson@email.com,2023-01-08,42,Toronto,Canada
+4,Emily,Brown,emily.brown@email.com,2023-03-12,25,Sydney,Australia
+5,David,Wilson,david.wilson@email.com,2023-02-05,31,Los Angeles,USA
+6,Sarah,Davis,sarah.davis@email.com,2023-01-22,29,Paris,France
+7,Robert,Miller,robert.miller@email.com,2023-03-01,38,Berlin,Germany
+8,Lisa,Garcia,lisa.garcia@email.com,2023-02-14,26,Madrid,Spain
+9,James,Martinez,james.martinez@email.com,2023-01-30,33,Rome,Italy
+10,Amanda,Taylor,amanda.taylor@email.com,2023-03-05,27,Tokyo,Japan
+11,Christopher,Anderson,chris.anderson@email.com,2023-01-18,35,Chicago,USA
+12,Jessica,Thomas,jessica.thomas@email.com,2023-02-28,30,Vancouver,Canada
+13,Daniel,Jackson,daniel.jackson@email.com,2023-01-12,24,Melbourne,Australia
+14,Ashley,White,ashley.white@email.com,2023-03-08,32,Amsterdam,Netherlands
+15,Matthew,Harris,matthew.harris@email.com,2023-02-10,36,Zurich,Switzerland

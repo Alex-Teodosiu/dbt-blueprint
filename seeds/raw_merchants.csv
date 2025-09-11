@@ -1,0 +1,21 @@
+merchant_id,merchant_name,category,city,country,founded_year
+1,Coffee Corner,Food & Beverage,New York,USA,2018
+2,Tech Electronics,Electronics,London,UK,2015
+3,Fashion Hub,Clothing,Toronto,Canada,2019
+4,Grocery Plus,Grocery,Sydney,Australia,2017
+5,Book World,Books,Los Angeles,USA,2020
+6,Fitness First,Health & Fitness,Paris,France,2016
+7,Auto Parts Pro,Automotive,Berlin,Germany,2014
+8,Home Decor Studio,Home & Garden,Madrid,Spain,2021
+9,Travel Agency Plus,Travel,Rome,Italy,2019
+10,Restaurant Deluxe,Food & Beverage,Tokyo,Japan,2018
+11,Sports Zone,Sports & Recreation,Chicago,USA,2017
+12,Beauty Salon,Personal Care,Vancouver,Canada,2020
+13,Pet Store Central,Pet Supplies,Melbourne,Australia,2019
+14,Music Store,Entertainment,Amsterdam,Netherlands,2016
+15,Pharmacy Quick,Healthcare,Zurich,Switzerland,2015
+16,Online Market,E-commerce,San Francisco,USA,2021
+17,Gas Station 24/7,Automotive,Dallas,USA,2013
+18,Pizza Palace,Food & Beverage,Miami,USA,2019
+19,Bank ATM,Financial Services,Seattle,USA,2010
+20,Clothing Outlet,Clothing,Phoenix,USA,2020

@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: bronze_users
+    description: "Bronze layer: Raw user data from source system with minimal transformations"
+    columns:
+      - name: user_id
+        description: "Unique identifier for users"
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: "User email address"
+        tests:
+          - not_null
+      - name: age
+        description: "User age in years"
+        tests:
+          - not_null
+
+  - name: bronze_merchants
+    description: "Bronze layer: Raw merchant data from source system with minimal transformations"
+    columns:
+      - name: merchant_id
+        description: "Unique identifier for merchants"
+        tests:
+          - unique
+          - not_null
+      - name: merchant_name
+        description: "Name of the merchant"
+        tests:
+          - not_null
+
+  - name: bronze_transactions
+    description: "Bronze layer: Raw transaction data from source system with minimal transformations"
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for transactions"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: "User who made the transaction"
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('bronze_users')
+                field: user_id
+      - name: merchant_id
+        description: "Merchant where transaction occurred"
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('bronze_merchants')
+                field: merchant_id
+      - name: amount
+        description: "Transaction amount"
+        tests:
+          - not_null

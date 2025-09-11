@@ -1,0 +1,96 @@
+version: 2
+
+models:
+  - name: silver_users
+    description: "Silver layer: Cleaned and validated user data with data quality rules applied"
+    columns:
+      - name: user_id
+        description: "Unique identifier for users"
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: "Cleaned and validated email address (lowercase)"
+        tests:
+          - not_null
+          - unique
+      - name: age
+        description: "Validated user age"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+                severity: warn
+      - name: age_group
+        description: "Age group classification"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Under 18', '18-24', '25-34', '35-44', '45-54', '55+']
+
+  - name: silver_merchants
+    description: "Silver layer: Cleaned and validated merchant data with business rules applied"
+    columns:
+      - name: merchant_id
+        description: "Unique identifier for merchants"
+        tests:
+          - unique
+          - not_null
+      - name: merchant_name
+        description: "Cleaned merchant name"
+        tests:
+          - not_null
+      - name: business_maturity
+        description: "Business maturity classification based on founding year"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['New (0-2 years)', 'Growing (3-5 years)', 'Established (6-10 years)', 'Mature (10+ years)']
+
+  - name: silver_transactions
+    description: "Silver layer: Cleaned and validated transaction data with business rules applied"
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for transactions"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: "User who made the transaction"
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_users')
+                field: user_id
+      - name: merchant_id
+        description: "Merchant where transaction occurred"
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_merchants')
+                field: merchant_id
+      - name: amount
+        description: "Validated transaction amount"
+        tests:
+          - not_null
+      - name: status
+        description: "Transaction status"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['completed', 'pending', 'failed']
+      - name: payment_method
+        description: "Payment method used"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['credit_card', 'debit_card', 'cash']
+      - name: transaction_size
+        description: "Transaction size classification"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Small', 'Medium', 'Large', 'Very Large']

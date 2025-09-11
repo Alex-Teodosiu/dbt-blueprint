@@ -1,0 +1,64 @@
+
+# Financial Data Pipeline with Medallion Architecture
+# A comprehensive dbt project blueprint for processing financial transaction data
+# using bronze (raw), silver (cleaned), and gold (business logic) layers
+name: 'financial_data_pipeline'
+version: '1.0.0'
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'financial_data_pipeline'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+# Variables for the project
+vars:
+  # Financial data processing settings
+  min_transaction_amount: 0.01
+  max_transaction_amount: 10000
+  supported_currencies: ['USD', 'EUR', 'GBP', 'CAD', 'AUD']
+  
+# Seeds configuration
+seeds:
+  financial_data_pipeline:
+    raw_users:
+      +docs:
+        description: "Raw user registration and demographic data"
+    raw_merchants:
+      +docs:
+        description: "Raw merchant business information and categorization"
+    raw_transactions:
+      +docs:
+        description: "Raw financial transaction records"
+
+# Configuring models - Medallion Architecture
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# Bronze layer: Raw data from sources (as views for fast development)
+# Silver layer: Cleaned and validated data (as tables for performance)
+# Gold layer: Business logic and aggregations (as tables for analytics)
+models:
+  financial_data_pipeline:
+    bronze:
+      +materialized: view
+      +docs:
+        node_color: "#CD7F32"  # Bronze color
+    silver:
+      +materialized: table
+      +docs:
+        node_color: "#C0C0C0"  # Silver color
+    gold:
+      +materialized: table
+      +docs:
+        node_color: "#FFD700"  # Gold color
