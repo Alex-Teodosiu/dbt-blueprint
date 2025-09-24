@@ -10,4 +10,6 @@ dependencies = [
     "elementary-data>=0.14,<0.16",
     "sqlfluff>=3,<4",
     "sqlfluff-templater-dbt>=3,<4",
+    "pyspark",
+    "ruff"
 ]
