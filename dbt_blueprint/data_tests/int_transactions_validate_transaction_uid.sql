@@ -3,7 +3,7 @@ with src as (
         event_domain,
         event_id_raw,
         transaction_uid
-    from {{ ref('int_transactions') }}
+    from {{ ref('int_transactions_sql') }}
 )
 
 select *

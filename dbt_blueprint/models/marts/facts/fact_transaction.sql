@@ -14,4 +14,4 @@ select
   , message
   , event_time
   , recorded_time
-from {{ ref('int_transactions') }}
+from {{ ref('int_transactions_sql') }}
